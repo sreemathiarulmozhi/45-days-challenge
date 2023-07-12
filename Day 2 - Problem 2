@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+        int n=0;
+        unordered_map<int,int> mp;
+        mp[0]++;
+        int m=0;
+        for(auto&i: nums)
+        {
+            m+=i;
+            m=((m)%k+k)%k;
+            n+=mp[m];
+            mp[m]++;
+        }
+        return n;
+    }
+};
